@@ -15,7 +15,7 @@ seqan_path = '/ebio/ag-neher/share/programs/include'
 seqan_module = Extension('_seqanpy',
                          sources=['seqanpy.i',
                                   'test.cpp',
-                                  'align_overlap.cpp'],
+                                  'align.cpp'],
                          swig_opts = ['-c++',
                                       '-modern',
                                       '-modernargs',

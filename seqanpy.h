@@ -11,4 +11,9 @@
 
 // Functions
 int nothing();
-int align_overlap(std::string seq1, std::string seq2, std::string* ali1, std::string* ali2, int band=100);
+int align_global(std::string seq1, std::string seq2, std::string* aliout1, std::string* aliout2, int band=100,
+                 int score_match=3, int score_mismatch=-3, int score_gapext=-1, int score_gapopen=-5);
+int align_overlap(std::string seq1, std::string seq2, std::string* aliout1, std::string* aliout2, int band=100,
+                 int score_match=3, int score_mismatch=-3, int score_gapext=-1, int score_gapopen=-5);
+int align_local(std::string seq1, std::string seq2, std::string* aliout1, std::string* aliout2,
+                 int score_match=3, int score_mismatch=-3, int score_gapext=-1, int score_gapopen=-5);
