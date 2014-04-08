@@ -72,7 +72,7 @@ int align_overlap(std::string seq1, std::string seq2, std::string* ali1, std::st
 		score = globalAlignment(ali,
 					Score<int,Simple>(score_match, score_mismatch,
                                                           score_gapext, score_gapopen),
-					AlignConfig<true, true, true, true>());
+					AlignConfig<true, false, false, true>());
 
 	// Set the output
 	TRow row1 = row(ali,0);

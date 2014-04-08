@@ -40,6 +40,39 @@
     PyTuple_SetItem($result, 2, alipy); 
 }
 
+/* Documentation */
+%feature("autodoc", "0");
+%feature("docstring") align_global
+"Global alignment of two sequences.
+
+Parameters:
+   seq1: string with the first seq
+   seq2: string with the second seq
+   band: make banded alignment, maximal shear between the sequences (-1 to turn off)
+   score_...: scores for the alignment
+";
+
+%feature("docstring") align_overlap
+"Align a subsequence onto a longer, reference one.
+
+Parameters:
+   seq1: string with the mother seq
+   seq2: string with the child subseq
+   band: make banded alignment, maximal shear between the sequences (-1 to turn off)
+   score_...: scores for the alignment
+
+Note: band counts also gaps at the edges, so it must be used with care.
+";
+
+%feature("docstring") align_local
+"Local alignment of two strings.
+
+Parameters:
+   seq1: string with the first seq
+   seq2: string with the second seq
+   score_...: scores for the alignment
+";
+
 
 /* HEADER */
 %include "seqanpy.h"
