@@ -1,7 +1,7 @@
 /*
  *  Created on:	26/01/2014
  *  Author:	Fabio Zanini
- *  Contents:	Test implementation file
+ *  Contents:	SWIG file for the seqanpy Python wrapper of SeqAn
  */
 %module seqanpy
 
@@ -13,8 +13,32 @@
 /* STL types */
 %include "std_string.i"
 
-/* SEQANPY (move to a separate file?) */
-/* align_overlap */
+/* SEQANPY */
+/* convert any Python input to string before passing down to C++ (duck typing) */
+%pythonprepend align_global {
+    # The name "args" is a hack here, one should use the "shadow" feature instead,
+    # but that one changes the signature; or a typemap calling ''.join from the C
+    # API, which is just as daunting
+    if len(args) >= 3:
+        args = (''.join(args[0]), ''.join(args[1]), args[2:])
+    else:
+        args = (''.join(args[0]), ''.join(args[1]))
+
+}
+%pythonprepend align_overlap {
+    if len(args) >= 3:
+        args = (''.join(args[0]), ''.join(args[1]), args[2:])
+    else:
+        args = (''.join(args[0]), ''.join(args[1]))
+}
+%pythonprepend align_local {
+    if len(args) >= 3:
+        args = (''.join(args[0]), ''.join(args[1]), args[2:])
+    else:
+        args = (''.join(args[0]), ''.join(args[1]))
+}
+
+/* "output" string pointers */
 %typemap(in, numinputs=0) std::string *aliout1(std::string temp) {
     $1 = &temp;
 }
