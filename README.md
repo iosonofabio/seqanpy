@@ -1,7 +1,7 @@
-= SEQANPY =
 SWIG Python wrapper for a few functions in SeqAn.
 
-== INSTALL ==
+INSTALL
+=======
 To install the module in the current folder:
 
 python2.7 setup.py install --install-lib . 
