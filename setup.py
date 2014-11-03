@@ -32,5 +32,11 @@ setup (name = 'seqanpy',
        description = """Python wrapper of some SeqAn functions (for now just pairwise alignments)""",
        ext_modules = [seqan_module],
        py_modules = ["seqanpy"],
+
+       # metadata for upload to PyPI
+       author_email = "fabio.zanini@tuebingen.mpg.de",
+       license = "BSD/2-clause",
+       keywords = "alignment sequence pairwise C++",
+       url = "http://example.com/HelloWorld/",
        )
 
