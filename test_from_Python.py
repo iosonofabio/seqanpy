@@ -22,7 +22,13 @@ if __name__ == '__main__':
     # Overlap pairwise alignment
     seq1 = 'AAAGGTCTA'
     seq2 = 'ATCT'
-    output = sap.align_overlap(seq1, seq2, band=5)
+    output = sap.align_overlap(seq1, seq2)
+    print output
+
+    # Ladder pairwise alignment
+    seq1 = 'AAAGGTCTA'
+    seq2 = 'TCTAGGGAAACCC'
+    output = sap.align_ladder(seq1, seq2)
     print output
 
     # Local pairwise alignment

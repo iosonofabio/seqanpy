@@ -31,6 +31,12 @@
     else:
         args = (''.join(args[0]), ''.join(args[1]))
 }
+%pythonprepend align_ladder {
+    if len(args) >= 3:
+        args = (''.join(args[0]), ''.join(args[1]), args[2:])
+    else:
+        args = (''.join(args[0]), ''.join(args[1]))
+}
 %pythonprepend align_local {
     if len(args) >= 3:
         args = (''.join(args[0]), ''.join(args[1]), args[2:])
@@ -80,8 +86,20 @@ Parameters:
 "Align a subsequence onto a longer, reference one.
 
 Parameters:
-   seq1: string with the mother seq
-   seq2: string with the child subseq
+   seq1: string with the reference seq
+   seq2: string with the subsequence (end gaps are free)
+   band: make banded alignment, maximal shear between the sequences (-1 to turn off)
+   score_...: scores for the alignment
+
+Note: band counts also gaps at the edges, so it must be used with care.
+";
+
+%feature("docstring") align_ladder
+"Align two sequences where the second is an overlapping extension of the first.
+
+Parameters:
+   seq1: string to be extended (end gaps are free)
+   seq2: string to use for extension (start gaps are free)
    band: make banded alignment, maximal shear between the sequences (-1 to turn off)
    score_...: scores for the alignment
 

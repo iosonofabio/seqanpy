@@ -9,6 +9,7 @@ from distutils.core import setup, Extension
 
 
 # Globals
+# NOTE: change this folder to your seqanpy include folder
 seqan_path = '/ebio/ag-neher/share/programs/include'
 
 # Extension description
@@ -28,7 +29,7 @@ seqan_module = Extension('_seqanpy',
 setup (name = 'seqanpy',
        version = '0.1',
        author      = "Fabio Zanini",
-       description = """Python wrapper of some SeqAn functions""",
+       description = """Python wrapper of some SeqAn functions (for now just pairwise alignments)""",
        ext_modules = [seqan_module],
        py_modules = ["seqanpy"],
        )
