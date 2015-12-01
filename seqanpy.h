@@ -6,7 +6,7 @@
  */
 // Includes
 #include <string>
-#include  <iostream>
+#include <iostream>
 #include <sstream>
 
 // Functions
