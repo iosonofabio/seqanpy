@@ -10,7 +10,7 @@ from distutils.core import setup, Extension
 
 # Globals
 # NOTE: change this folder to your seqanpy include folder
-seqan_path = '/ebio/ag-neher/share/programs/include'
+seqan_path = '/usr/include'
 
 # Extension description
 seqan_module = Extension('_seqanpy',
