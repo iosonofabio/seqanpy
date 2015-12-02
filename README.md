@@ -13,11 +13,15 @@ If necessary, edit the `seqan_path` variable in `setup.py` to your SeqAn include
 
 To install system-wide:
 
+```sh
 python2.7 setup.py install
+```
 
 To install in the current folder:
 
-python2.7 setup.py install --install-lib . 
+```sh
+python2.7 setup.py install --install-lib .
+```
 
 Remember to add the current folder to your `PYTHONPATH`.
 
