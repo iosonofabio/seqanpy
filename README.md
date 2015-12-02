@@ -3,7 +3,7 @@ SWIG Python wrapper for a few functions in SeqAn.
 REQUIREMENTS
 ============
  - SeqAn 1.4 or later
- - SWIG 2. If you have SWIG 3, there is a branch for that too.
+ - SWIG 3
 
 INSTALL
 =======
