@@ -22,6 +22,7 @@ _seqanpy = Extension('_seqanpy',
                                   '-modernargs',
                                   '-keyword',
                                   '-I'+seqan_path],
+                     extra_compile_args=['-std=c++11'],
                      include_dirs=[seqan_path],
                     )
 
