@@ -2,8 +2,8 @@ SWIG Python wrapper for a few functions in SeqAn.
 
 REQUIREMENTS
 ============
- - A C++ compiler
- - [Python](https://www.python.org/) 2.7+ or 3+.
+ - A C++ 11 compiler, e.g. GCC4.8+
+ - [Python](https://www.python.org/) 2.7+ or 3.
  - [SeqAn](http://www.seqan.de/) 1.4 or later
  - [SWIG](http://www.swig.org/) 3 (there is a [branch](https://github.com/iosonofabio/seqanpy/tree/swig2) for SWIG 2)
 
