@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/iosonofabio/seqanpy.svg?branch=master)](https://travis-ci.org/iosonofabio/seqanpy)
+
 SWIG Python wrapper for a few functions in SeqAn.
 
 REQUIREMENTS
