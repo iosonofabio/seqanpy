@@ -23,18 +23,18 @@ class my_build_ext(build_ext.build_ext):
         else:
             return build_ext.build_ext.find_swig(self)
 
-seqan_module = Extension('_seqanpy',
-                         sources=['seqanpy.i',
-                                  'test.cpp',
-                                  'align.cpp'],
-                         swig_opts = ['-c++',
-                                      '-modern',
-                                      '-modernargs',
-                                      '-keyword',
-                                      '-I'+seqan_path],
-                         extra_compile_args=['-std=c++11'],
-                         include_dirs=[seqan_path],
-                        )
+_seqanpy = Extension('_seqanpy',
+                     sources=['seqanpy.i',
+                              'test.cpp',
+                              'align.cpp'],
+                     swig_opts = ['-c++',
+                                  '-modern',
+                                  '-modernargs',
+                                  '-keyword',
+                                  '-I'+seqan_path],
+                     extra_compile_args=['-std=c++11'],
+                     include_dirs=[seqan_path],
+                    )
 
 
 setup(name='seqanpy',
