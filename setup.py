@@ -5,6 +5,7 @@ date:       26/01/14
 content:    Setup file for the Python wrapper of SeqAn.
 '''
 # Modules
+from distutils.command import build_ext
 from distutils.core import setup, Extension
 
 
@@ -13,6 +14,15 @@ from distutils.core import setup, Extension
 seqan_path = '/usr/include'
 
 # Extension description
+class my_build_ext(build_ext.build_ext):
+    def find_swig(self):
+        import os
+        swig_cmd = os.getenv('SWIG')
+        if swig_cmd is not None:
+            return swig_cmd
+        else:
+            return build_ext.build_ext.find_swig(self)
+
 _seqanpy = Extension('_seqanpy',
                      sources=['seqanpy.i',
                               'test.cpp',
@@ -39,5 +49,6 @@ setup(name='seqanpy',
       license="BSD/2-clause",
       keywords="alignment sequence pairwise C++",
       url="https://github.com/iosonofabio/seqanpy",
+      cmdclass={'build_ext': my_build_ext},
      )
 
