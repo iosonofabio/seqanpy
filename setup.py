@@ -12,13 +12,12 @@ from distutils.core import setup, Extension
 # Globals
 # NOTE: change this folder to your seqanpy include folder
 seqan_path = '/usr/include'
-# NOTE: change this string to call your SWIG2
-swig_cmd = None # 'swig-2'
-
 
 # Extension description
 class my_build_ext(build_ext.build_ext):
     def find_swig(self):
+        import os
+        swig_cmd = os.getenv('SWIG')
         if swig_cmd is not None:
             return swig_cmd
         else:
@@ -41,15 +40,15 @@ seqan_module = Extension('_seqanpy',
 setup(name='seqanpy',
       version='0.1',
       author="Fabio Zanini",
-      description="""Python wrapper of some SeqAn functions (for now just pairwise alignments)""",
-      ext_modules=[seqan_module],
+      description="""Python wrapper of some SeqAn functions (for now pairwise alignments)""",
+      ext_modules=[_seqanpy],
       py_modules=["seqanpy"],
 
       # metadata for upload to PyPI
-      author_email="fabio.zanini@tuebingen.mpg.de",
+      author_email="fabio.zanini@fastmail.fm",
       license="BSD/2-clause",
       keywords="alignment sequence pairwise C++",
-      url="http://example.com/HelloWorld/",
+      url="https://github.com/iosonofabio/seqanpy",
       cmdclass={'build_ext': my_build_ext},
      )
 

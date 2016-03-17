@@ -1,0 +1,22 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+
+env:
+ - CC=gcc-5
+
+addons:
+  apt:
+    sources:
+     - ubuntu-toolchain-r-test
+    packages:
+     - gcc-5
+     - g++-5
+ 
+script:
+ - bash .travis_compile.sh
