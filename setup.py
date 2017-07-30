@@ -48,6 +48,7 @@ class install_seqan(Command):
 
         if os.path.isdir(seqan_path+'/seqan'):
             p('SeqAn include folder found. Not installing.')
+            return
 
         # TODO install here
         p('SeqAn include folder NOT found. Should install (not implemented!)')
