@@ -8,11 +8,10 @@ dist: trusty
 
 python:
   - "2.7"
-  - "3.2"
+  - "3.6"
   - "3.3"
   - "3.4"
   - "3.5"
-  - "3.6"
 
 env:
  - CC=gcc-5 SWIG=swig3.0
@@ -37,4 +36,4 @@ script:
  - ./.travis_test.sh
 
 after_success:
- - ./travis_deploy.sh
+ - ./.travis_deploy.sh
