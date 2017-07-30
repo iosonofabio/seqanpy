@@ -5,16 +5,60 @@ date:       26/01/14
 content:    Setup file for the Python wrapper of SeqAn.
 '''
 # Modules
+import os
+import sys
 from distutils.command import build_ext
 from distutils.core import setup, Extension
+from distutils.cmd import Command
+from distutils.log import INFO as logINFO
 
 
 # Globals
-# NOTE: change this folder to your seqanpy include folder
-seqan_path = '/usr/include'
+py_maj = sys.version_info[0]
 
-# Extension description
+# Use this env variable to set your SeqAn include folder
+seqan_path = os.getenv('SEQAN_INCLUDE_PATH',
+                       '/usr/include').rstrip(os.path.sep)
+
+
+class install_seqan(Command):
+    '''Install seqan before anything else'''
+    description = "check SeqAn installation"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        self.install_seqan()
+
+    def install_seqan(self):
+        from subprocess import check_call
+        if py_maj == 2:
+            from subprocess import CalledProcessError as SubprocessError
+        else:
+            from subprocess import SubprocessError
+
+        def c(x): return check_call(x, shell=True)
+
+        def p(x): return self.announce(x, level=logINFO)
+
+        if os.path.isdir(seqan_path+'/seqan'):
+            p('SeqAn include folder found. Not installing.')
+
+        # TODO install here
+        p('SeqAn include folder NOT found. Should install (not implemented!)')
+        pass
+
+
 class my_build_ext(build_ext.build_ext):
+    def run(self):
+        self.run_command('install_seqan')
+        build_ext.build_ext.run(self)
+
     def find_swig(self):
         import os
         swig_cmd = os.getenv('SWIG')
@@ -23,24 +67,25 @@ class my_build_ext(build_ext.build_ext):
         else:
             return build_ext.build_ext.find_swig(self)
 
+
 _seqanpy = Extension('_seqanpy',
                      sources=['seqanpy.i',
                               'test.cpp',
                               'align.cpp'],
-                     swig_opts = ['-c++',
-                                  '-modern',
-                                  '-modernargs',
-                                  '-keyword',
-                                  '-I'+seqan_path],
+                     swig_opts=['-c++',
+                                '-modern',
+                                '-modernargs',
+                                '-keyword',
+                                '-I'+seqan_path],
                      extra_compile_args=['-std=c++11'],
                      include_dirs=[seqan_path],
-                    )
+                     )
 
 
 setup(name='seqanpy',
-      version='0.1',
+      version="0.1",
       author="Fabio Zanini",
-      description="""Python wrapper of some SeqAn functions (for now pairwise alignments)""",
+      description="""Fast pairwise sequence alignment using SeqAn""",
       ext_modules=[_seqanpy],
       py_modules=["seqanpy"],
 
@@ -49,6 +94,8 @@ setup(name='seqanpy',
       license="BSD/2-clause",
       keywords="alignment sequence pairwise C++",
       url="https://github.com/iosonofabio/seqanpy",
-      cmdclass={'build_ext': my_build_ext},
-     )
-
+      cmdclass={
+          'install_seqan': install_seqan,
+          'build_ext': my_build_ext
+          },
+      )

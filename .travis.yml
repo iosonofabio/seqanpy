@@ -6,6 +6,7 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
+  - "3.6"
 
 env:
  - CC=gcc-5 SWIG=swig3.0
@@ -23,5 +24,11 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y swig3.0
  
+install:
+ - ./.travis_install.sh
+
 script:
- - bash .travis_compile.sh
+ - ./.travis_test.sh
+
+after_success:
+ - ./travis_deploy.sh
