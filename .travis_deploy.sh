@@ -49,11 +49,11 @@ ls dist
 # TODO: rename file (Pyi hates same-naming)
 if [ -z $TAG3 ]; then
   echo "Production version, no renaming"
-  SDIST_FN=dist/seqanpy-"${SETUPVERSION}".tar.gz
+  SDIST_FN=dist/seqanpy-"${TAG2}".tar.gz
 else
   echo "Testing version, renaming..."
-  SDIST_FN=dist/seqanpy-"${SETUPVERSION}_${TAG3}".tar.gz
-  mv dist/seqanpy-"${SETUPVERSION}".tar.gz "${SDIST_FN}"
+  SDIST_FN=dist/seqanpy-"${TAG2}_${TAG3}".tar.gz
+  mv dist/seqanpy-"${TAG2}".tar.gz "${SDIST_FN}"
 fi
 echo "${SDIST_FN}"
 
