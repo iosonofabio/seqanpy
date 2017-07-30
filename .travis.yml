@@ -1,3 +1,6 @@
+notifications:
+  email: false
+
 language: python
 
 python:
@@ -25,6 +28,7 @@ before_install:
   - sudo apt-get install -y swig3.0
  
 install:
+ - ls
  - ./.travis_install.sh
 
 script:
