@@ -3,6 +3,9 @@ notifications:
 
 language: python
 
+os: linux
+dist: trusty
+
 python:
   - "2.7"
   - "3.2"
