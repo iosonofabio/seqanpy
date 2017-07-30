@@ -82,6 +82,9 @@ nosetests.xml
 .*
 !.gitignore
 !.travis.yml
+!.travis_test.sh
+!.travis_install.sh
+!.travis_deploy.sh
 *~
 
 
