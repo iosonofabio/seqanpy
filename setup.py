@@ -19,6 +19,17 @@ py_maj = sys.version_info[0]
 # Use this env variable to set your SeqAn include folder
 seqan_path = os.getenv('SEQAN_INCLUDE_PATH',
                        '/usr/include').rstrip(os.path.sep)
+seqan_cpp_std = 'c++11'
+if os.path.isdir(seqan_path+'/seqan'):
+    with open(seqan_path+'/seqan/version.h', 'rt') as f:
+        for line in f:
+            if 'SEQAN_VERSION_MAJOR' in line:
+                seqan_vma = int(line.rstrip('\n').split(' ')[-1])
+            if 'SEQAN_VERSION_MINOR' in line:
+                seqan_vmi = int(line.rstrip('\n').split(' ')[-1])
+        if (seqan_vma > 2) or ((seqan_vma == 2) and (seqan_vmi >= 2)):
+            print('SeqAn 2.2+ found. Setting C++ standard to c++14.')
+            seqan_cpp_std = 'c++14'
 
 
 class install_seqan(Command):
@@ -50,8 +61,9 @@ class install_seqan(Command):
             p('SeqAn include folder found. Not installing.')
             return
 
-        # TODO install here
         p('SeqAn include folder NOT found. Should install (not implemented!)')
+        # TODO install here 2.2+
+        #seqan_cpp_std = 'c++14'
         pass
 
 
@@ -78,7 +90,7 @@ _seqanpy = Extension('_seqanpy',
                                 '-modernargs',
                                 '-keyword',
                                 '-I'+seqan_path],
-                     extra_compile_args=['-std=c++11'],
+                     extra_compile_args=['-std='+seqan_cpp_std],
                      include_dirs=[seqan_path],
                      )
 
