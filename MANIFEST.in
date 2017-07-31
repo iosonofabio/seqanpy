@@ -1,6 +1,15 @@
-align.cpp
-seqanpy.h
-seqanpy.i
-seqanpy.py
-setup.py
-test.cpp
+# C++ files
+include seqanpy.h
+include align.cpp
+
+# SWIG interfaces
+include seqanpy.i
+
+# Python parti of the module
+include seqanpy.py
+
+# Setup
+include setup.py
+
+# C++ tests (do we need these?)
+include test.cpp
