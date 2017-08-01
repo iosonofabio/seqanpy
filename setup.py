@@ -61,10 +61,9 @@ class install_seqan(Command):
             p('SeqAn include folder found. Not installing.')
             return
 
-        p('SeqAn include folder NOT found. Should install (not implemented!)')
-        # TODO install here 2.2+
-        #seqan_cpp_std = 'c++14'
-        pass
+        raise IOError('SeqAn include folder NOT found. Install it and set the'+
+                      ' environment variable SEQAN_INCLUDE_PATH to the parent'+
+                      ' of the SeqAn include folder and retry.')
 
 
 class my_build_ext(build_ext.build_ext):
