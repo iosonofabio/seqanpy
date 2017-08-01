@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/iosonofabio/seqanpy.svg?branch=master)](https://travis-ci.org/iosonofabio/seqanpy)
+[![PyPI version](https://badge.fury.io/py/seqanpy.svg)](https://pypi.org/project/seqanpy)
 
 Fast pairwise sequence alignment using SeqAn, in Python.
 
