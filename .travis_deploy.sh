@@ -1,5 +1,13 @@
 #!/bin/bash
-# only deploy builds for a release_<sematic-version>_RC?? tag to testpypi
+# deploy builds for a release_<semantic-version>_RC?? tag to testpypi
+# e.g. release_0.2_RC1
+# deploy builds for a release_<semantic-version> to production pypi (careful with those!)
+# e.g. release_0.3
+# 
+# NOTE: the env variables TWINE_USERNAME, TWINE_PASSWORD_PYPI, TWINE_PASSWORD_TESTPYPI
+# need to be set in the Travis CI settings. Those strings need escaping from bash, so
+# if you have e.g. backslashes in your password you need to escape them then typing on the
+# Travis settings page.
 if [ -z $TRAVIS_TAG ]; then
   echo 'No TRAVIS_TAG, exit'
   exit 0
