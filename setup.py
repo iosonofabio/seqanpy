@@ -98,7 +98,10 @@ setup(name='seqanpy',
       version="0.2",
       author="Fabio Zanini",
       description="""Fast pairwise sequence alignment using SeqAn""",
-      long_description="""Fast pairwise sequence alignment using SeqAn""",
+      long_description="""Fast pairwise sequence alignment using SeqAn.
+
+      Instructions and development: https://github.com/iosonofabio/seqanpy
+      """,
       ext_modules=[_seqanpy],
       py_modules=["seqanpy"],
 
