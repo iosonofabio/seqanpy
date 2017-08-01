@@ -16,6 +16,12 @@ Export the environment variable `SEQAN_INCLUDE_PATH` to the parent folder of you
 export SEQAN_INCLUDE_PATH=/usr/local/include
 ```
 
+If your SWIG 3 is not executed by the standard `swig` command, e.g. because it is called `swig3` or because it is not in the `PATH`, just export another environment variable called `SWIG`, e.g.:
+
+```sh
+export SWIG=swig3
+```
+
 Now you can use one of the following methods to install `seqanpy`.
 
 ## Pip
