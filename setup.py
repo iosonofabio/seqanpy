@@ -19,9 +19,8 @@ py_maj = sys.version_info[0]
 # Use this env variable to set your SeqAn include folder
 seqan_path = os.getenv('SEQAN_INCLUDE_PATH',
                        '/usr/include').rstrip(os.path.sep)
-seqan_path = os.path.join(seqan_path, "seqan")
 seqan_cpp_std = 'c++11'
-if os.path.isdir(seqan_path):
+if os.path.isdir(seqan_path+'/seqan'):
     with open(seqan_path+'/seqan/version.h', 'rt') as f:
         for line in f:
             if 'define SEQAN_VERSION_MAJOR' in line:
