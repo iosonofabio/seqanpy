@@ -23,9 +23,9 @@ seqan_cpp_std = 'c++11'
 if os.path.isdir(seqan_path+'/seqan'):
     with open(seqan_path+'/seqan/version.h', 'rt') as f:
         for line in f:
-            if 'SEQAN_VERSION_MAJOR' in line:
+            if 'define SEQAN_VERSION_MAJOR' in line:
                 seqan_vma = int(line.rstrip('\n').split(' ')[-1])
-            if 'SEQAN_VERSION_MINOR' in line:
+            if 'define SEQAN_VERSION_MINOR' in line:
                 seqan_vmi = int(line.rstrip('\n').split(' ')[-1])
         if (seqan_vma > 2) or ((seqan_vma == 2) and (seqan_vmi >= 2)):
             print('SeqAn 2.2+ found. Setting C++ standard to c++14.')
