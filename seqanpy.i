@@ -15,6 +15,10 @@
 
 /* SEQANPY */
 /* convert any Python input to string before passing down to C++ (duck typing) */
+%pythonprepend align_semi_global %{
+    seq1 = ''.join(seq1)
+    seq2 = ''.join(seq2)
+%}
 %pythonprepend align_global %{
     seq1 = ''.join(seq1)
     seq2 = ''.join(seq2)
