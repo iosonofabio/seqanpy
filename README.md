@@ -52,4 +52,6 @@ after the --install-lib option. Remember to add that to your
 ```python
 import seqanpy
 print(seqanpy.align_global('ACCGGT', 'CCG'))
+print(seqanpy.align_global('AGTAGCTGATCAGTCATGA', 'AGGTGACAGTACA'))
+print(seqanpy.align_semi_global('AGTAGCTGATCAGTCATGA', 'AGGTGACAGTACA'))
 ```
