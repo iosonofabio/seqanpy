@@ -31,6 +31,13 @@
     seq1 = ''.join(seq1)
     seq2 = ''.join(seq2)
 %}
+%pythonappend align_overlap %{
+    if cut_flanks:
+        ali_start = len(ali2) - len(ali2.lstrip('-'))
+        ali_end = len(ali2.rstrip('-'))
+        ali1 = ali1[ali_start: ali_end]
+        ali2 = ali2[ali_start: ali_end]
+%}
 
 /* "output" string pointers */
 %typemap(in, numinputs=0) std::string *aliout1(std::string temp) {
