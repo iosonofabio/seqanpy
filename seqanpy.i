@@ -67,7 +67,10 @@ Parameters:
    seq1: string with the first seq
    seq2: string with the second seq
    band: make banded alignment, maximal shear between the sequences (-1 to turn off)
-   score_...: scores for the alignment
+   score_match: score for every match
+   score_mismatch: score for every mismatch (usually a negative number)
+   score_gapext: score for extending a gap (usually a negative number)
+   score_gapopen: score for opening a gap (usually a negative number)
 ";
 
 %feature("docstring") align_overlap
@@ -77,7 +80,10 @@ Parameters:
    seq1: string with the reference seq
    seq2: string with the subsequence (end gaps are free)
    band: make banded alignment, maximal shear between the sequences (-1 to turn off)
-   score_...: scores for the alignment
+   score_match: score for every match
+   score_mismatch: score for every mismatch (usually a negative number)
+   score_gapext: score for extending a gap (usually a negative number)
+   score_gapopen: score for opening a gap (usually a negative number)
 
 Note: band counts also gaps at the edges, so it must be used with care.
 ";
@@ -89,7 +95,10 @@ Parameters:
    seq1: string to be extended (end gaps are free)
    seq2: string to use for extension (start gaps are free)
    band: make banded alignment, maximal shear between the sequences (-1 to turn off)
-   score_...: scores for the alignment
+   score_match: score for every match
+   score_mismatch: score for every mismatch (usually a negative number)
+   score_gapext: score for extending a gap (usually a negative number)
+   score_gapopen: score for opening a gap (usually a negative number)
 
 Note: band counts also gaps at the edges, so it must be used with care.
 ";
@@ -100,7 +109,10 @@ Note: band counts also gaps at the edges, so it must be used with care.
 Parameters:
    seq1: string with the first seq
    seq2: string with the second seq
-   score_...: scores for the alignment
+   score_match: score for every match
+   score_mismatch: score for every mismatch (usually a negative number)
+   score_gapext: score for extending a gap (usually a negative number)
+   score_gapopen: score for opening a gap (usually a negative number)
 ";
 
 
