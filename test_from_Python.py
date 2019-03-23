@@ -25,6 +25,12 @@ if __name__ == '__main__':
     output = sap.align_overlap(seq1, seq2)
     print output
 
+    # Overlap pairwise alignment cutting flanks
+    seq1 = 'AAAGGTCTA'
+    seq2 = 'ATCT'
+    output = sap.align_overlap(seq1, seq2, cut_flanks=True)
+    print output
+
     # Ladder pairwise alignment
     seq1 = 'AAAGGTCTA'
     seq2 = 'TCTAGGGAAACCC'

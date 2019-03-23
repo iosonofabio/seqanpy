@@ -32,11 +32,14 @@
     seq2 = ''.join(seq2)
 %}
 %pythonappend align_overlap %{
+    # The C++ function returs a variable called val
     if cut_flanks:
+        s, ali1, ali2 = val
         ali_start = len(ali2) - len(ali2.lstrip('-'))
         ali_end = len(ali2.rstrip('-'))
         ali1 = ali1[ali_start: ali_end]
         ali2 = ali2[ali_start: ali_end]
+        val = (s, ali1, ali2)
 %}
 
 /* "output" string pointers */
